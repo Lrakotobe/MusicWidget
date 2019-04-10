@@ -97,14 +97,13 @@ class MusicView extends WidgetView {
 			"height":"50px",
 			"background":"#414B49",
 			"border-radius":"50%",
-			"text":"play",
-			"userSelect": "none",
 			 "cursor": "pointer"
 		});
 		Events.on(this.play, "click", (event) => this.mvc.controller.playClick());
     	this.display.appendChild(this.play);
 
     	this.next = HH.create("e");
+	this.play.innerHTML = ">>"
     	SS.style(this.next, {
     		"position":"absolute",
 			"top":"30px",
