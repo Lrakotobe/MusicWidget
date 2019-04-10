@@ -223,8 +223,7 @@ class MusicController extends WidgetController {
 	}
 	
     playClick(event){
-		var asset =  AV.Asset.fromURL ( 'https://hello.nicopr.fr/songs/salama.mp3' );
-		var player =  AV.Player.fromURL (asset);
+		var player =  AV.Player.fromURL ('https://hello.nicopr.fr/songs/salama.mp3');
 		player.play;
     }
 
