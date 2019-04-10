@@ -103,7 +103,7 @@ class MusicView extends WidgetView {
     	this.display.appendChild(this.play);
 
     	this.next = HH.create("e");
-	this.play.innerHTML = ">>"
+	this.next.innerHTML = ">>"
     	SS.style(this.next, {
     		"position":"absolute",
 			"top":"30px",
