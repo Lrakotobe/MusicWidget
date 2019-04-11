@@ -92,14 +92,15 @@ class MusicView extends WidgetView {
     	//play.textContent = Play;
     	this.play.innerHTML = "play";
     	SS.style(this.play, {
-    		"color":"#FFFFFF",
-    		"position":"absolute",
+    			"color":"#FFFFFF",
+    			"position":"absolute",
 			"top":"26px",
 			"right":"125px",
-    		"width":"50px",
+    			"width":"50px",
 			"height":"50px",
 			"background":"#414B49",
 			"border-radius":"50%",
+			"textAlign": "center",
 			 "cursor": "pointer",
 		});
 		Events.on(this.play, "click", (event) => this.mvc.controller.playClick());
