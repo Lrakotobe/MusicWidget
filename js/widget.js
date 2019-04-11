@@ -69,7 +69,8 @@ class MusicView extends WidgetView {
 			"height":"25px",
 			"background":"#D4E0CE",
 			"border-radius":"50%",
-			
+			"textAlign": "center",
+			"cursor": "pointer"
 		});
     	this.display.appendChild(this.random);
 
@@ -82,6 +83,8 @@ class MusicView extends WidgetView {
 			"height":"40px",
 			"background":"#414B49",
 			"border-radius":"50%",
+			"textAlign": "center",
+			"cursor": "pointer"
 		});
     	this.display.appendChild(this.previous);
 
@@ -97,7 +100,7 @@ class MusicView extends WidgetView {
 			"height":"50px",
 			"background":"#414B49",
 			"border-radius":"50%",
-			 "cursor": "pointer"
+			 "cursor": "pointer",
 		});
 		Events.on(this.play, "click", (event) => this.mvc.controller.playClick());
     	this.display.appendChild(this.play);
@@ -126,6 +129,8 @@ class MusicView extends WidgetView {
 			"height":"25px",
 			"background":"#D4E0CE",
 			"border-radius":"50%",
+			"cursor": "pointer",
+			"textAlign": "center",
 		});
     	this.display.appendChild(this.repeat);
 
