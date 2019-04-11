@@ -128,7 +128,7 @@ class MusicView extends WidgetView {
 			"right":"16px",
     		"width":"25px",
 			"height":"25px",
-			"background":"#D4E0CE",
+			"background":"#https://st.depositphotos.com/1062321/4616/v/950/depositphotos_46165335-stock-illustration-repeat-sign-icon.jpg",
 			"border-radius":"50%",
 			"cursor": "pointer",
 			"textAlign": "center",
