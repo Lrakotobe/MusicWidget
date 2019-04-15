@@ -124,14 +124,14 @@ class MusicView extends WidgetView {
 		this.repeat = HH.create("f");
     	SS.style(this.repeat, {
     		"position":"absolute",
-			"top":"38px",
-			"right":"16px",
+		"top":"38px",
+		"right":"16px",
     		"width":"25px",
-			"height":"25px",
-			"background":"#https://st.depositphotos.com/1062321/4616/v/950/depositphotos_46165335-stock-illustration-repeat-sign-icon.jpg",
-			"border-radius":"50%",
-			"cursor": "pointer",
-			"textAlign": "center",
+		"height":"25px",
+		"background":"#D4E0CE",		
+		"border-radius":"50%",
+		"cursor": "pointer",
+		"textAlign": "center",
 		});
     	this.display.appendChild(this.repeat);
 
@@ -228,8 +228,7 @@ class MusicController extends WidgetController {
 	}
 	
     playClick(event){
-		var asset =  AV.Asset.fromURL ( 'https://hello.nicopr.fr/songs/salama.mp3' );
-		var player =  AV.Player.fromURL (asset);
+		var player =  AV.Player.fromURL ( 'https://hello.nicopr.fr/songs/salama.mp3' );
 		player.play;
     }
 
