@@ -1,3 +1,6 @@
+//var AV = require('av');
+//require('mp3');
+
 class MusicWidget extends Widget {
 	
 	constructor(id, app) {
@@ -72,9 +75,11 @@ class MusicView extends WidgetView {
 			"textAlign": "center",
 			"cursor": "pointer"
 		});
+		Events.on(this.random, "click", (event) => this.mvc.controller.randomClick());
     	this.display.appendChild(this.random);
 
     	this.previous = HH.create("c");
+    	this.previous.innerHTML = "\n<<";
     	SS.style(this.previous, {
     		"position":"absolute",
 			"top":"30px",
@@ -86,12 +91,12 @@ class MusicView extends WidgetView {
 			"textAlign": "center",
 			"cursor": "pointer"
 		});
+		Events.on(this.previous, "click", (event) => this.mvc.controller.previousClick());
     	this.display.appendChild(this.previous);
 
-    	this.play = HH.create("d");
-    	//play.textContent = Play;
-    	this.play.innerHTML = "play";
-    	SS.style(this.play, {
+    	this.stop = HH.create("d");
+    	this.stop.innerHTML = "\nstop";
+    	SS.style(this.stop, {
     			"color":"#FFFFFF",
     			"position":"absolute",
 			"top":"26px",
@@ -103,11 +108,11 @@ class MusicView extends WidgetView {
 			"textAlign": "center",
 			 "cursor": "pointer",
 		});
-		Events.on(this.play, "click", (event) => this.mvc.controller.playClick());
-    	this.display.appendChild(this.play);
+		Events.on(this.stop, "click", (event) => this.mvc.controller.stopClick());
+    	this.display.appendChild(this.stop);
 
     	this.next = HH.create("e");
-	this.next.innerHTML = ">>"
+	this.next.innerHTML = "\n>>"
     	SS.style(this.next, {
     		"position":"absolute",
 			"top":"30px",
@@ -119,6 +124,7 @@ class MusicView extends WidgetView {
 			"textAlign": "center",
       		"cursor": "pointer",
 		});
+		Events.on(this.next, "click", (event) => this.mvc.controller.nextClick());
     	this.display.appendChild(this.next);
 
 		this.repeat = HH.create("f");
@@ -133,18 +139,24 @@ class MusicView extends WidgetView {
 		"cursor": "pointer",
 		"textAlign": "center",
 		});
+		Events.on(this.repeat, "click", (event) => this.mvc.controller.repeatClick());
     	this.display.appendChild(this.repeat);
 
-    	this.picture = HH.create("g");
-    	SS.style(this.picture, {
+    	this.play = HH.create("g");
+    	this.play.innerHTML = "play\npause";
+    	SS.style(this.play, {
     	  "position":"absolute",
 		  "top":"85px",
 		  "left":"6px",
     	  "width": "54px",
     	  "height": "54px",
     	  "backgroundColor": "#66ACAE",
+    	  "border-radius":"50%",
+    	  "textAlign": "center",
+		  "cursor": "pointer",
     	});
-    	this.stage.appendChild(this.picture);
+    	Events.on(this.play, "click", (event) => this.mvc.controller.playClick());
+    	this.stage.appendChild(this.play);
 
     	this.infos = HH.create("i");
     	SS.style(this.infos, {
@@ -182,10 +194,11 @@ class MusicView extends WidgetView {
     	this.barreMusic = HH.create("k");
     	SS.style(this.barreMusic, {
     	  "float": "left",
-    	  "width": "150px",
-    	  "height": "6px",
+    	  "width": "0px",
+    	  "height": "100%",
     	  "backgroundColor": "#414B49",
     	  "border-radius":"12px",
+    	  "transition-duration":"1s"
     	});
     	this.barreLoad.appendChild(this.barreMusic);
 
@@ -204,11 +217,12 @@ class MusicView extends WidgetView {
     	this.volume = HH.create("k");
     	SS.style(this.volume, {
     	  "float": "left",
-    	  "width": "80px",
+    	  "width": "relative",
     	  "height": "4px",
     	  "backgroundColor": "#414B49",
     	  "border-radius":"12px",
     	});
+    	Events.on(this.volume, "click", (event) => this.mvc.controller.volumeClick());
     	this.barreVolume.appendChild(this.volume);
 
 
@@ -221,6 +235,9 @@ class MusicView extends WidgetView {
 	
 }
 
+var player =  AV.Player.fromFile ( 'test.mp3' );
+var pourcentage = 0;
+var song= document.querySelector('audio');
 class MusicController extends WidgetController {
 	
 	constructor() {
@@ -228,9 +245,15 @@ class MusicController extends WidgetController {
 	}
 	
     playClick(event){
-		var player =  AV.Player.fromURL ( 'https://hello.nicopr.fr/songs/salama.mp3' );
 		player.play;
+		console.log(player.playing);
+		console.log(player.duration);
     }
+
+    stopClick(event){
+		player.stop;
+    }
+
 
 
 	setUp() {
@@ -240,3 +263,5 @@ class MusicController extends WidgetController {
 	
 	
 }
+
+
