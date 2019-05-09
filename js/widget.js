@@ -63,8 +63,9 @@ class MusicView extends WidgetView {
     	this.stage.appendChild(this.display);
 
 
-    	this.random = HH.create("b");
+    	this.random = HH.create("button");
     	SS.style(this.random, {
+    		"color":"#FFFFFF",
     		"position":"absolute",
 			"top":"38px",
 			"left":"16px",
@@ -78,9 +79,10 @@ class MusicView extends WidgetView {
 		Events.on(this.random, "click", (event) => this.mvc.controller.randomClick());
     	this.display.appendChild(this.random);
 
-    	this.previous = HH.create("c");
+    	this.previous = HH.create("button");
     	this.previous.innerHTML = "\n<<";
     	SS.style(this.previous, {
+    		"color":"#FFFFFF",
     		"position":"absolute",
 			"top":"30px",
 			"left":"59px",
@@ -94,7 +96,7 @@ class MusicView extends WidgetView {
 		Events.on(this.previous, "click", (event) => this.mvc.controller.previousClick());
     	this.display.appendChild(this.previous);
 
-    	this.stop = HH.create("d");
+    	this.stop = HH.create("button");
     	this.stop.innerHTML = "\nstop";
     	SS.style(this.stop, {
     			"color":"#FFFFFF",
@@ -111,9 +113,10 @@ class MusicView extends WidgetView {
 		Events.on(this.stop, "click", (event) => this.mvc.controller.stopClick());
     	this.display.appendChild(this.stop);
 
-    	this.next = HH.create("e");
+    	this.next = HH.create("button");
 	this.next.innerHTML = "\n>>"
     	SS.style(this.next, {
+    		"color":"#FFFFFF",
     		"position":"absolute",
 			"top":"30px",
 			"right":"59px",
@@ -127,7 +130,7 @@ class MusicView extends WidgetView {
 		Events.on(this.next, "click", (event) => this.mvc.controller.nextClick());
     	this.display.appendChild(this.next);
 
-		this.repeat = HH.create("f");
+		this.repeat = HH.create("button");
     	SS.style(this.repeat, {
     		"position":"absolute",
 		"top":"38px",
@@ -142,9 +145,10 @@ class MusicView extends WidgetView {
 		Events.on(this.repeat, "click", (event) => this.mvc.controller.repeatClick());
     	this.display.appendChild(this.repeat);
 
-    	this.play = HH.create("g");
+    	this.play = HH.create("button");
     	this.play.innerHTML = "play\npause";
     	SS.style(this.play, {
+    		"color":"#FFFFFF",
     	  "position":"absolute",
 		  "top":"85px",
 		  "left":"6px",
@@ -158,8 +162,11 @@ class MusicView extends WidgetView {
     	Events.on(this.play, "click", (event) => this.mvc.controller.playClick());
     	this.stage.appendChild(this.play);
 
-    	this.infos = HH.create("i");
+    	this.infos = HH.create("button");
+    	this.infos.innerHTML = "Unknow title";
     	SS.style(this.infos, {
+    	  "color":"#FFFFFF",
+    	  "textAlign": "center",
     	  "position":"absolute",
 		  "top":"85px",
 		  "left":"65px",
@@ -169,7 +176,7 @@ class MusicView extends WidgetView {
     	});
     	this.stage.appendChild(this.infos);
 
-    	this.barre = HH.create("i");
+    	this.barre = HH.create("div");
     	SS.style(this.barre, {
     	  "position":"absolute",
 		  "top":"115px",
@@ -181,7 +188,7 @@ class MusicView extends WidgetView {
     	});
     	this.stage.appendChild(this.barre);
 
-    	this.barreLoad = HH.create("j");
+    	this.barreLoad = HH.create("div");
     	SS.style(this.barreLoad, {
     	  "float": "left",
     	  "width": "200px",
@@ -191,10 +198,10 @@ class MusicView extends WidgetView {
     	});
     	this.barre.appendChild(this.barreLoad);
 
-    	this.barreMusic = HH.create("k");
+    	this.barreMusic = HH.create("div");
     	SS.style(this.barreMusic, {
     	  "float": "left",
-    	  "width": "0px",
+    	  "width": "10px",
     	  "height": "100%",
     	  "backgroundColor": "#414B49",
     	  "border-radius":"12px",
@@ -202,7 +209,7 @@ class MusicView extends WidgetView {
     	});
     	this.barreLoad.appendChild(this.barreMusic);
 
-    	this.barreVolume = HH.create("k");
+    	this.barreVolume = HH.create("div");
     	SS.style(this.barreVolume, {
     	  "position":"absolute",
 		  "top":"128px",
@@ -214,7 +221,7 @@ class MusicView extends WidgetView {
     	});
     	this.stage.appendChild(this.barreVolume);
 
-    	this.volume = HH.create("k");
+    	this.volume = HH.create("div");
     	SS.style(this.volume, {
     	  "float": "left",
     	  "width": "relative",
@@ -242,16 +249,17 @@ class MusicController extends WidgetController {
 	
 	constructor() {
 		super();
+
 	}
 	
+
     playClick(event){
-		player.play;
-		console.log(player.playing);
-		console.log(player.duration);
+		this.play;
+		this._playing = true;
     }
 
     stopClick(event){
-		player.stop;
+		this.stop;
     }
 
 
